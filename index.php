@@ -8,9 +8,12 @@
 </head>
 <body class="bg-gray-100">
     <div class="min-h-screen flex items-center justify-center">
-        <h1 class="text-2xl text-red-500 underline">
+        <h1 class="text-2xl text-red-500 underline bg-amber-200">
             test
         </h1>
+        <h2 class="text-3xl text-blue-500 ">
+           TEST LAGI 123 
+        </h2>
     </div>
 </body>
 </html>

@@ -20,7 +20,7 @@
             <h1 class="text-3xl font-bold text-gray-800">Selamat Datang!</h1>
             <p class="text-gray-500">Silahkan login ke akun Anda</p>
         </div>
-        <form action="login_process.php" method="POST">
+        <form action="process/login_process.php" method="POST">
             <div class="mb-6">
                 <label for="username" class="block text-sm font-semibold text-gray-700 mb-2">Username</label>
                 <input type="text" id="username" name="username" placeholder="Masukkan username Anda"
@@ -33,12 +33,15 @@
                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition duration-150 ease-in-out"
                        required>
             </div>
+            <!--
+            buat nanti kalo mau punya fitur remember me
             <div class="mb-6 flex items-center justify-between">
                 <div class="flex items-center">
                     <input type="checkbox" id="remember_me" name="remember_me" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
                     <label for="remember_me" class="ml-2 block text-sm text-gray-900">Remember me</label>
                 </div>
             </div>
+            -->
             <div>
                 <button type="submit"
                         class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">

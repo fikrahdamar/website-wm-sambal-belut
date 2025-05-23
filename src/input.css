@@ -1,1 +1,16 @@
 @import "tailwindcss";
+
+@layer components {
+  .navbar-teks-admin {
+    @apply text-gray-600 hover:text-gray-900 transition;
+  }
+  .edit-admin-button {
+    @apply bg-gray-600 hover:bg-gray-700 text-white px-3 py-1 rounded;
+  }
+  .delete-admin-button {
+    @apply bg-red-100 hover:bg-red-200 text-red-700 font-medium px-3 py-1 rounded border border-red-300 transition;
+  }
+  .add-admin-button {
+    @apply bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded;
+  }
+}

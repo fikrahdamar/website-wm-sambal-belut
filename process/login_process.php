@@ -1,17 +1,19 @@
 <?php
 session_start();
 
-$host = 'localhost';
-$db = 'warung_makan_sambalbelut';
-$user = 'root';
-$pass = '';
+require_once '../includes/conn.php';
 
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
-}
+// $host = 'localhost';
+// $db = 'warung_makan_sambalbelut';
+// $user = 'root';
+// $pass = '';
+
+// try {
+//     $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
+//     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+// } catch (PDOException $e) {
+//     die("Database connection failed: " . $e->getMessage());
+// }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = trim($_POST['username']);
@@ -23,8 +25,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //     exit();
     // }
 
-    $sql = "SELECT id, users_name, password, role FROM users WHERE users_name = :username LIMIT 1";
-    $stmt = $pdo->prepare($sql);
+    $sql = "SELECT id, users_name, `password`, role FROM users WHERE users_name = :username LIMIT 1";
+    $stmt = $conn->prepare($sql);
     $stmt->bindParam(':username', $username, PDO::PARAM_STR);
     $stmt->execute();
 

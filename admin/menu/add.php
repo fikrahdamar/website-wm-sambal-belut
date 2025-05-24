@@ -33,7 +33,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="bg-white shadow rounded-lg p-6 max-w-xl mx-auto">
             <h2 class="text-xl font-semibold mb-4">Tambah Menu Baru</h2>
 
-            <form method="post" action="/process/menu/add-menu_process.php"" class="space-y-4">
+            <form method="post" action="../../process/menu/add-menu_process.php"" class="space-y-4">
                 <div>
                     <label class="block mb-1 font-medium">Nama Menu</label>
                     <input type="text" name="name" required class="w-full border border-gray-300 rounded px-3 py-2">

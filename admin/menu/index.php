@@ -54,10 +54,21 @@ $menus = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
 
             <?php if (isset($_GET['success'])): ?>
-                <div class="mb-4 px-4 py-3 rounded bg-green-100 text-green-800 border border-green-300">
-                    ✅ Menu berhasil ditambahkan!
-                </div>
+                <?php if ($_GET['success'] === 'deleted'): ?>
+                    <div class="mb-4 px-4 py-3 rounded bg-red-100 text-red-800 border">
+                        🗑️ Menu berhasil dihapus!
+                    </div>
+                <?php elseif ($_GET['success'] === 'added'): ?>
+                    <div class="mb-4 px-4 py-3 rounded bg-green-100 text-green-800 border">
+                        ✅ Menu berhasil ditambahkan!
+                    </div>
+                <?php elseif ($_GET['success'] === 'edited'): ?>
+                    <div class="mb-4 px-4 py-3 rounded bg-blue-100 text-blue-800 border">
+                        ✏️ Menu berhasil diedit!
+                    </div>
+                <?php endif; ?>
             <?php endif; ?>
+            
 
             <table class="w-full text-sm text-left text-gray-600">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
@@ -86,7 +97,7 @@ $menus = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             </td>
                             <td class="px-4 py-2 text-right space-x-2">
                                 <a href="edit.php?id=<?= $menu['id'] ?>" class="edit-admin-button">Edit</a>
-                                <a href="delete.php?id=<?= $menu['id'] ?>" onclick="return confirm('Yakin ingin menghapus menu ini?')" class="delete-admin-button">Hapus</a>
+                                <a href="../../process/menu/delete-menu_process.php?id=<?= $menu['id'] ?>" onclick="return confirm('Yakin ingin menghapus menu ini?')" class="delete-admin-button">Hapus</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

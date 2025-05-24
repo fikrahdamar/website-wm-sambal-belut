@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         $stmt = $conn->prepare("INSERT INTO menus (name, description, price, category_id, available) VALUES (?, ?, ?, ?, ?)");
         $stmt->execute([$name, $description, $price, $category_id, $available]);
-        header("Location: /admin/menu/index.php?success=1");
+        header("Location: ../../admin/menu/index.php?success=added");
     } catch (PDOException $e) {
         
         echo "Gagal menyimpan: " . $e->getMessage();

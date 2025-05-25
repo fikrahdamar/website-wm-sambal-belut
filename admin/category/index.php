@@ -34,7 +34,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <li><a href="./index.php" class="navbar-teks-admin text-blue-600 font-bold">Kategori</a></li>
                 <li><a href="../stock/index.php" class="navbar-teks-admin">Stok</a></li>
                 <li><a href="../membership/index.php" class="navbar-teks-admin">Member</a></li>
-                <li><a href="../transactions.php" class="navbar-teks-admin">Riwayat Pembayaran</a></li>
+                <li><a href="../transaction/index.php" class="navbar-teks-admin">Riwayat Pembayaran</a></li>
                 <li><a href="../../logout.php" class="text-red-600 hover:text-red-800">Logout</a></li>
             </ul>
         </div>

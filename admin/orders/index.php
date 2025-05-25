@@ -47,7 +47,7 @@ try {
                 <li><a href="../category/index.php" class="text-gray-700 hover:text-blue-600">Kategori</a></li>
                 <li><a href="../stock/index.php" class="text-gray-700 hover:text-blue-600">Stok</a></li>
                 <li><a href="../membership/index.php" class="text-gray-700 hover:text-blue-600">Member</a></li>
-                <li><a href="../transactions.php" class="text-gray-700 hover:text-blue-600">Riwayat Pembayaran</a></li>
+                <li><a href="../transaction/index.php" class="text-gray-700 hover:text-blue-600">Riwayat Pembayaran</a></li>
                 <li><a href="../../logout.php" class="text-red-600 hover:text-red-800">Logout</a></li>
             </ul>
         </div>

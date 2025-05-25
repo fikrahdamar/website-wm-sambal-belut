@@ -35,8 +35,8 @@ try {
                 <li><a href="../menu/index.php" class="navbar-teks-admin">Menu</a></li>
                 <li><a href="../category/index.php" class="navbar-teks-admin">Kategori</a></li>
                 <li><a href="../stock/index.php" class="navbar-teks-admin">Stok</a></li>
-                <li><a href="./members.php" class="navbar-teks-admin text-blue-600 font-bold">Member</a></li>
-                <li><a href="./transactions.php" class="navbar-teks-admin">Riwayat Pembayaran</a></li>
+                <li><a href="./index.php" class="navbar-teks-admin text-blue-600 font-bold">Member</a></li>
+                <li><a href="../transaction/index.php" class="navbar-teks-admin">Riwayat Pembayaran</a></li>
                 <li><a href="../../logout.php" class="text-red-600 hover:text-red-800">Logout</a></li>
             </ul>
         </div>

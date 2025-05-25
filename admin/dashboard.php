@@ -85,7 +85,7 @@ $peak_hours_data = $stmt_peak_hours->fetchAll(PDO::FETCH_ASSOC);
 
             <!-- Menu Navigasi -->
             <ul class="flex items-center space-x-6 text-sm font-medium">
-                <li><a href="./orders.php" class="text-gray-700 hover:text-blue-600">Pesanan</a></li>
+                <li><a href="./orders/index.php" class="text-gray-700 hover:text-blue-600">Pesanan</a></li>
                 <li><a href="./menu/index.php" class="text-gray-700 hover:text-blue-600">Menu</a></li>
                 <li><a href="./category/index.php" class="text-gray-700 hover:text-blue-600">Kategori</a></li>
                 <li><a href="./stock.php" class="text-gray-700 hover:text-blue-600">Stok</a></li>

@@ -39,7 +39,7 @@ $menus = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <li><a href="../orders.php" class="navbar-teks-admin">Pesanan</a></li>
                 <li><a href="" class="navbar-teks-admin text-blue-600 font-bold">Menu</a></li>
                 <li><a href="../category/index.php" class="navbar-teks-admin">Kategori</a></li>
-                <li><a href="../stock.php" class="navbar-teks-admin">Stok</a></li>
+                <li><a href="../stock/index.php" class="navbar-teks-admin">Stok</a></li>
                 <li><a href="../members.php" class="navbar-teks-admin">Member</a></li>
                 <li><a href="../transactions.php" class="navbar-teks-admin">Riwayat Pembayaran</a></li>
             </ul>

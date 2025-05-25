@@ -31,7 +31,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
             <li><a href="./orders.php" class="text-gray-700 hover:text-blue-500">Pesanan</a></li>
             <li><a href="./menu/index.php" class="text-gray-700 hover:text-blue-500">Menu</a></li>
             <li><a href="./category/index.php" class="text-gray-700 hover:text-blue-500">Kategori</a></li>
-            <li><a href="./stock.php" class="text-gray-700 hover:text-blue-500">Stok</a></li>
+            <li><a href="./stock/index.php" class="text-gray-700 hover:text-blue-500">Stok</a></li>
             <li><a href="./members.php" class="text-gray-700 hover:text-blue-500">Member</a></li>
             <li><a href="./transactions.php" class="text-gray-700 hover:text-blue-500">Riwayat Pembayaran</a></li>
         </ul>

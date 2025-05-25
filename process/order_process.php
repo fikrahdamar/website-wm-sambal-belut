@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+require_once '../includes/conn.php';
 
 $user_id = $_POST['user_id'] ?? null;
 $payment_method = $_POST['payment_method'];
@@ -13,34 +13,42 @@ if (empty($cart)) {
 
 $total_price = 0;
 
+try {
+    $pdo->beginTransaction();
 
-$query = "INSERT INTO orders (users_id, status, payment_method, total_price, service_type) 
-          VALUES (?, 'pending', ?, 0, ?)";
-$stmt = mysqli_prepare($conn, $query);
-mysqli_stmt_bind_param($stmt, "iss", $user_id, $payment_method, $service_type);
-mysqli_stmt_execute($stmt);
-$order_id = mysqli_insert_id($conn);
+    $insertOrder = "INSERT INTO orders (users_id, status, payment_method, total_price, service_type) 
+                    VALUES (?, 'pending', ?, 0, ?)";
+    $stmt = $pdo->prepare($insertOrder);
+    $stmt->execute([$user_id, $payment_method, $service_type]);
+    $order_id = $pdo->lastInsertId();
 
+    foreach ($cart as $menu_id => $qty) {
+        $menuStmt = $pdo->prepare("SELECT price FROM menus WHERE id = ?");
+        $menuStmt->execute([$menu_id]);
+        $menu = $menuStmt->fetch(PDO::FETCH_ASSOC);
 
-foreach ($cart as $menu_id => $qty) {
-    $menu_result = mysqli_query($conn, "SELECT price FROM menus WHERE id = $menu_id");
-    $menu = mysqli_fetch_assoc($menu_result);
-    $subtotal = $menu['price'] * $qty;
-    $total_price += $subtotal;
+        $subtotal = $menu['price'] * $qty;
+        $total_price += $subtotal;
 
-    mysqli_query($conn, "INSERT INTO orders_items (orders_id, menus_id, quantity, subtotal) 
-                         VALUES ($order_id, $menu_id, $qty, $subtotal)");
+        $itemStmt = $pdo->prepare("INSERT INTO orders_items (orders_id, menus_id, quantity, subtotal) 
+                                   VALUES (?, ?, ?, ?)");
+        $itemStmt->execute([$order_id, $menu_id, $qty, $subtotal]);
+    }
+
+    $updateOrder = $pdo->prepare("UPDATE orders SET total_price = ? WHERE id = ?");
+    $updateOrder->execute([$total_price, $order_id]);
+
+    if ($user_id) {
+        $point = floor($total_price / 10000);
+        $pdo->prepare("UPDATE users SET point = point + ? WHERE id = ?")->execute([$point, $user_id]);
+    }
+
+    $pdo->commit();
+    unset($_SESSION['cart']);
+    header("Location: ../src/order_history.php");
+    exit;
+
+} catch (Exception $e) {
+    $pdo->rollBack();
+    die("Terjadi kesalahan saat memproses pesanan: " . $e->getMessage());
 }
-
-
-mysqli_query($conn, "UPDATE orders SET total_price = $total_price WHERE id = $order_id");
-
-if ($user_id) {
-    $point = floor($total_price / 10000);
-    mysqli_query($conn, "UPDATE users SET point = point + $point WHERE id = $user_id");
-}
-
-
-unset($_SESSION['cart']);
-header("Location: ../src/order_history.php");
-exit;

@@ -17,7 +17,7 @@
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
     <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
         <div class="text-center mb-8">
-            <h1 class="text-3xl font-bold text-gray-800">Selamat Datang!</h1>
+            <h1 class="text-2xl font-bold text-gray-800">Spesial Sambal Belut Bu Raden</h1>
             <p class="text-gray-500">Silahkan login ke akun Anda</p>
         </div>
         <form action="process/login_process.php" method="POST">
@@ -52,6 +52,11 @@
                 <p class="text-sm text-gray-600">
                     Tidak punya akun? <a href="register.php" class="font-medium text-blue-600 hover:text-blue-500">Daftar</a>
                 </p>
+                <hr class="my-6 border-gray-300">
+                <button type="button"
+                        class="w-full bg-white border border-blue-600 text-blue-600 font-bold py-3 px-4 rounded-lg focus:outline-none focus:shadow-outline transition duration-150 ease-in-out hover:bg-gray-100">
+                    Lihat Menu
+                </button>
             </div>
         </form>
     </div>

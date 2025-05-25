@@ -32,12 +32,13 @@ $stocks = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <span class="text-sm font-bold text-gray-500 pl-5">Admin Panel</span>
             </div>
             <ul class="flex items-center space-x-6 text-sm font-medium">
-                <li><a href="../orders.php" class="navbar-teks-admin">Pesanan</a></li>
+                <li><a href="../orders/index.php" class="navbar-teks-admin">Pesanan</a></li>
                 <li><a href="../menu/index.php" class="navbar-teks-admin">Menu</a></li>
                 <li><a href="../category/index.php" class="navbar-teks-admin ">Kategori</a></li>
-                <li><a href="./index.php" class="navbar-teks-admin text-blue-600 font-bold">Stok</a></li>
-                <li><a href="../members.php" class="navbar-teks-admin">Member</a></li>
+                <li><a href=".index.php" class="navbar-teks-admin text-blue-600 font-bold">Stok</a></li>
+                <li><a href="../membership/index.php" class="navbar-teks-admin">Member</a></li>
                 <li><a href="../transactions.php" class="navbar-teks-admin">Riwayat Pembayaran</a></li>
+                <li><a href="../../logout.php" class="text-red-600 hover:text-red-800">Logout</a></li>
             </ul>
         </div>
     </nav>

@@ -45,8 +45,8 @@ try {
                 <li><a href="./index.php" class="text-blue-600 font-bold">Pesanan</a></li>
                 <li><a href="../menu/index.php" class="text-gray-700 hover:text-blue-600">Menu</a></li>
                 <li><a href="../category/index.php" class="text-gray-700 hover:text-blue-600">Kategori</a></li>
-                <li><a href="../stock.php" class="text-gray-700 hover:text-blue-600">Stok</a></li>
-                <li><a href="../members.php" class="text-gray-700 hover:text-blue-600">Member</a></li>
+                <li><a href="../stock/index.php" class="text-gray-700 hover:text-blue-600">Stok</a></li>
+                <li><a href="../membership/index.php" class="text-gray-700 hover:text-blue-600">Member</a></li>
                 <li><a href="../transactions.php" class="text-gray-700 hover:text-blue-600">Riwayat Pembayaran</a></li>
                 <li><a href="../../logout.php" class="text-red-600 hover:text-red-800">Logout</a></li>
             </ul>

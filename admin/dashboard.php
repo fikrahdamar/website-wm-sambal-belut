@@ -15,7 +15,7 @@ $sql_daily_sales = "SELECT DATE(created_at) as sale_date, SUM(total_price) as da
                     FROM orders
                     WHERE status = 'completed'
                     GROUP BY DATE(created_at)
-                    ORDER BY sale_date DESC LIMIT 7"; // ambil 7 hari terakhir
+                    ORDER BY sale_date DESC LIMIT 7"; // Get last 7 days
 $stmt_daily_sales = $conn->prepare($sql_daily_sales);
 $stmt_daily_sales->execute();
 $daily_sales_data = $stmt_daily_sales->fetchAll(PDO::FETCH_ASSOC);
@@ -25,7 +25,7 @@ $sql_weekly_sales = "SELECT YEARWEEK(created_at, 1) as sale_week, SUM(total_pric
                      FROM orders
                      WHERE status = 'completed'
                      GROUP BY YEARWEEK(created_at, 1)
-                     ORDER BY sale_week DESC LIMIT 4"; // ambil 4 minggu terakhir
+                     ORDER BY sale_week DESC LIMIT 4"; // Get last 4 weeks
 $stmt_weekly_sales = $conn->prepare($sql_weekly_sales);
 $stmt_weekly_sales->execute();
 $weekly_sales_data = $stmt_weekly_sales->fetchAll(PDO::FETCH_ASSOC);
@@ -35,7 +35,7 @@ $sql_monthly_sales = "SELECT YEAR(created_at) as sale_year, MONTH(created_at) as
                       FROM orders
                       WHERE status = 'completed'
                       GROUP BY YEAR(created_at), MONTH(created_at)
-                      ORDER BY sale_year DESC, sale_month DESC LIMIT 12"; // ambil 12 bulan terakhir
+                      ORDER BY sale_year DESC, sale_month DESC LIMIT 12"; // Get last 12 months
 $stmt_monthly_sales = $conn->prepare($sql_monthly_sales);
 $stmt_monthly_sales->execute();
 $monthly_sales_data = $stmt_monthly_sales->fetchAll(PDO::FETCH_ASSOC);
@@ -47,7 +47,7 @@ $sql_best_sellers = "SELECT m.name, SUM(oi.quantity) as total_sold
                      JOIN orders o ON oi.orders_id = o.id
                      WHERE o.status = 'completed'
                      GROUP BY m.name
-                     ORDER BY total_sold DESC LIMIT 10"; // top 10 menu terlaris
+                     ORDER BY total_sold DESC LIMIT 10"; // Top 10 best sellers
 $stmt_best_sellers = $conn->prepare($sql_best_sellers);
 $stmt_best_sellers->execute();
 $best_sellers_data = $stmt_best_sellers->fetchAll(PDO::FETCH_ASSOC);
@@ -57,7 +57,7 @@ $sql_peak_hours = "SELECT HOUR(created_at) as sales_hour, COUNT(*) as total_orde
                    FROM orders
                    WHERE status = 'completed'
                    GROUP BY HOUR(created_at)
-                   ORDER BY total_orders DESC LIMIT 5"; // top 5 jam penjualan terbanyak
+                   ORDER BY total_orders DESC LIMIT 5"; // Top 5 peak hours
 $stmt_peak_hours = $conn->prepare($sql_peak_hours);
 $stmt_peak_hours->execute();
 $peak_hours_data = $stmt_peak_hours->fetchAll(PDO::FETCH_ASSOC);

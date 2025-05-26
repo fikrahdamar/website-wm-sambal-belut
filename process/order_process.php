@@ -45,7 +45,7 @@ try {
 
     $pdo->commit();
     unset($_SESSION['cart']);
-    header("Location: ../src/order_history.php");
+    header("Location: ../menu.php");
     exit;
 
 } catch (Exception $e) {

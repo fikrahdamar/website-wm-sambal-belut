@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $cart = $_SESSION['cart'] ?? [];
 
     if (empty($cart)) {
-        header("Location: ../menu/index.php");
+        header("Location: ../../../user/menu.php");
         exit();
     }
 

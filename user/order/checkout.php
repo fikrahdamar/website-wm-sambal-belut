@@ -8,8 +8,6 @@ if (isset($_SESSION['user_id']) && $_SESSION['role'] !== 'member') {
 }
 
 $user_id = $_SESSION['user_id'] ?? null;
-
-$user_id = $_SESSION['user_id'];
 $cart = $_SESSION['cart'] ?? [];
 
 if (empty($cart)) {

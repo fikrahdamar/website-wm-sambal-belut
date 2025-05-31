@@ -2,10 +2,12 @@
 session_start();
 require_once '../../includes/conn.php';
 
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'member') {
+if (isset($_SESSION['user_id']) && $_SESSION['role'] !== 'member') {
     header("Location: ../../login.php");
     exit();
 }
+
+$user_id = $_SESSION['user_id'] ?? null;
 
 $user_id = $_SESSION['user_id'];
 $cart = $_SESSION['cart'] ?? [];
@@ -18,22 +20,31 @@ if (empty($cart)) {
 // Hitung total
 $total_price = 0;
 $cart_items = [];
-foreach ($cart as $menu_id => $item) {
-    $quantity = $item['qty'];
-    $stmt = $conn->prepare("SELECT id, name, price FROM menus WHERE id = ? AND available = 1");
-    $stmt->execute([$menu_id]);
-    $menu = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($menu) {
-        $subtotal = $menu['price'] * $quantity;
-        $total_price += $subtotal;
-        $cart_items[] = [
-            'id' => $menu['id'],
-            'name' => $menu['name'],
-            'price' => $menu['price'],
-            'quantity' => $quantity,
-            'subtotal' => $subtotal
-        ];
+foreach ($cart as $item) {
+    $quantity = $item['qty'];
+
+    $stmt = $conn->prepare("SELECT available FROM menus WHERE id = ?");
+    $stmt->execute([$item['id']]);
+    $is_available = $stmt->fetchColumn();
+
+    if ($is_available == 1) {
+        $key = $item['name']; 
+
+        if (isset($cart_items[$key])) {
+            $cart_items[$key]['quantity'] += $item['qty'];
+            $cart_items[$key]['subtotal'] += $item['price'] * $item['qty'];
+        } else {
+            $cart_items[$key] = [
+                'id' => $item['id'],
+                'name' => $item['name'],
+                'price' => $item['price'], 
+                'quantity' => $item['qty'],
+                'subtotal' => $item['price'] * $item['qty']
+            ];
+        }
+
+        $total_price += $item['price'] * $item['qty'];
     }
 }
 ?>
@@ -77,8 +88,9 @@ foreach ($cart as $menu_id => $item) {
             </table>
         </div>
 
-        <form action="process/process_order.php" method="post" class="space-y-4">
+        <form action="../../process/process_user/order/process_order.php" method="post" class="space-y-4">
             <input type="hidden" name="total_price" value="<?= $total_price ?>">
+            <input type="hidden" name="user_id" value="<?= $user_id ?>">
 
             <div>
                 <label for="payment_method" class="block text-sm font-medium text-gray-700">Metode Pembayaran</label>
@@ -97,7 +109,7 @@ foreach ($cart as $menu_id => $item) {
             </div>
 
             <div class="flex justify-end space-x-3">
-                <a href="../menu/index.php" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded">Kembali</a>
+                <a href="../cart.php" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded">Kembali</a>
                 <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6 rounded">Konfirmasi Pesanan</button>
             </div>
         </form>

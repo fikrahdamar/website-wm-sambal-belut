@@ -55,13 +55,13 @@ try {
         </div>
         <ul class="flex space-x-6 text-xl font-medium">
             <li><a href="#menu" class="hover:text-green-600">Menu</a></li>
-            <li><a href="#" class="hover:text-green-600">Order</a></li>
+            <li><a href="./user/menu.php" class="hover:text-green-600">Order</a></li>
             <li><a href="#footer" class="hover:text-green-600">Contact Us</a></li>
         </ul>
         <ul class="flex space-x-6 text-xl font-medium">
             <?php if (isset($_SESSION['user_id'])): ?>
-                <li><a href="#" class="hover:text-green-600">Point</a></li>
-                <li><a href="#" class="hover:text-green-600">Profile</a></li>
+                <li><a href="./user/point/redeem_rewards.php" class="hover:text-green-600">Point</a></li>
+                <li><a href="./user/member/profile-page.php" class="hover:text-green-600">Profile</a></li>
             <?php else: ?>
                 <li><a href="login.php" class="hover:text-green-600">Login</a></li>
             <?php endif; ?>
@@ -131,8 +131,8 @@ try {
                 </div>
 
                 <div class="space-y-3">
-                    <h4 class="font-semibold">WANT TO BE THE SMARTEST IN YOUR OFFICE?</h4>
-                    <a href="#" class="underline hover:text-yellow-300">SIGN UP FOR OUR NEWSLETTER →</a>
+                    <h4 class="font-semibold">Our Social Media</h4>
+                    <a href="#" class="underline hover:text-yellow-300">Instagram</a>
                     <div class="flex space-x-4 pt-2 text-xl">
                         <a href="#"><i class="fa-brands fa-behance"></i></a>
                         <a href="#"><i class="fa-brands fa-instagram"></i></a>

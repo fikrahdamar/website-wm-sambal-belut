@@ -38,7 +38,7 @@ $items = $stmtItems->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <title>Detail Pesanan</title>
-    <link href="../../src/output.css"> <!-- Tailwind CSS build -->
+    <link href="../../src/output.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100 min-h-screen p-6">
 

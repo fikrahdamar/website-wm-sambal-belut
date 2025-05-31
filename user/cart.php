@@ -35,7 +35,7 @@ if (isset($_GET['hapus'])) {
 $total = 0;
 if (isset($_SESSION['cart'])) {
     foreach ($_SESSION['cart'] as $item) {
-        $total += $item['subtotal'];
+        $total += $item['price'] * $item['qty'];
     }
 }
 ?>
@@ -45,7 +45,7 @@ if (isset($_SESSION['cart'])) {
 <head>
   <meta charset="UTF-8">
   <title>Keranjang Belanja</title>
-  <link href="./src/output.css" rel="stylesheet">
+  <link href="../src/output.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100">
   <div class="max-w-3xl mx-auto py-10">
@@ -68,7 +68,8 @@ if (isset($_SESSION['cart'])) {
               <td class="px-4 py-2"><?= htmlspecialchars($item['name']) ?></td>
               <td>Rp <?= number_format($item['price'], 0, ',', '.') ?></td>
               <td><?= $item['qty'] ?></td>
-              <td>Rp <?= number_format($item['subtotal'], 0, ',', '.') ?></td>
+              <?php $subtotal = $item['price'] * $item['qty']; ?>
+              <td>Rp <?= number_format($subtotal, 0, ',', '.') ?></td>
               <td>
                 <a href="cart.php?hapus=<?= $item['id'] ?>"
                    class="text-red-500 hover:underline">Hapus</a>
@@ -80,7 +81,7 @@ if (isset($_SESSION['cart'])) {
 
       <div class="text-right mt-4">
         <p class="text-xl font-semibold text-gray-700">Total: <span class="text-blue-600">Rp <?= number_format($total, 0, ',', '.') ?></span></p>
-        <a href="checkout.php" class="inline-block mt-4 bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-2 rounded">
+        <a href="./order/checkout.php" class="inline-block mt-4 bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-2 rounded">
           Checkout
         </a>
       </div>

@@ -88,8 +88,8 @@ $peak_hours_data = $stmt_peak_hours->fetchAll(PDO::FETCH_ASSOC);
                 <li><a href="./orders/index.php" class="text-gray-700 hover:text-blue-600">Pesanan</a></li>
                 <li><a href="./menu/index.php" class="text-gray-700 hover:text-blue-600">Menu</a></li>
                 <li><a href="./category/index.php" class="text-gray-700 hover:text-blue-600">Kategori</a></li>
-                <li><a href="./stock.php" class="text-gray-700 hover:text-blue-600">Stok</a></li>
-                <li><a href="./members.php" class="text-gray-700 hover:text-blue-600">Member</a></li>
+                <li><a href="./stock/index.php" class="text-gray-700 hover:text-blue-600">Stok</a></li>
+                <li><a href="./membership/index.php" class="text-gray-700 hover:text-blue-600">Member</a></li>
                 <li><a href="./transaction/index.php" class="text-gray-700 hover:text-blue-600">Riwayat Pembayaran</a></li>
                 <li><a href="../logout.php" class="text-red-600 hover:text-red-800">Logout</a></li>
             </ul>

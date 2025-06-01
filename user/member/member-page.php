@@ -3,7 +3,7 @@ session_start();
 require_once '../../includes/conn.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'member') {
-    header("location: ../login.php");
+    header("location: ../../login.php");
     exit();
 }
 

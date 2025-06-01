@@ -42,9 +42,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($user['role'] == 'admin') {
             header("Location: ../admin/dashboard.php");
             exit();
-        } else {
-            // ini buat yang bagian user, bisa ganti mau redirect ke mana
-            header("Location: ../index.php");
+        } else if($user['role'] == 'member'){
+            header("Location: ../user/member/member-page.php");
             exit();
         }
     } else {

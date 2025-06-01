@@ -41,8 +41,7 @@ foreach ($grouped as $date => $entries) {
 <nav class="bg-white border-b border-gray-200 shadow px-6 py-4">
     <div class="flex items-center justify-between">
         <div class="text-2xl font-bold text-gray-800">
-            <a href="../dashboard.php">🍽️ Sambal Belut</a>
-            <span class="text-sm font-bold text-gray-500 pl-5">Admin Panel</span>
+        <a href="../dashboard.php">🍽️ Sambal Belut</a><span class="text-sm font-bold text-gray-500 pl-5">Admin Panel</span>
         </div>
         <ul class="flex items-center space-x-6 text-sm font-medium">
             <li><a href="../orders/index.php" class="navbar-teks-admin">Pesanan</a></li>

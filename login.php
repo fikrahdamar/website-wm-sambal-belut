@@ -53,10 +53,10 @@
                     Tidak punya akun? <a href="register.php" class="font-medium text-blue-600 hover:text-blue-500">Daftar</a>
                 </p>
                 <hr class="my-6 border-gray-300">
-                <button type="button"
-                        class="w-full bg-white border border-blue-600 text-blue-600 font-bold py-3 px-4 rounded-lg focus:outline-none focus:shadow-outline transition duration-150 ease-in-out hover:bg-gray-100">
+                <a href="user/menu.php"
+                   class="w-full bg-white border border-blue-600 text-blue-600 font-bold py-3 px-4 rounded-lg focus:outline-none focus:shadow-outline transition duration-150 ease-in-out hover:bg-gray-100 text-center block">
                     Lihat Menu
-                </button>
+                </a>
             </div>
         </form>
     </div>

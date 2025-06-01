@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $hashed = password_hash($password, PASSWORD_DEFAULT);
 
-            $stmt = $conn->prepare("INSERT INTO users (users_name, password, role, point) VALUES (?, ?, 'user', 0)");
+            $stmt = $conn->prepare("INSERT INTO users (users_name, password, role, point) VALUES (?, ?, 'member', 0)");
             $stmt->execute([$username, $hashed]);
 
             header("Location: login.php?success=registered");

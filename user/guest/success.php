@@ -43,11 +43,11 @@ $total = 0;
     </div>
 
     <div class="mt-6 space-y-3 text-center">
-        <a href=" YANG TAU LOKASI WARUNG MAKANNYA INI ISI LINK NYA" target="_blank"
+        <a href="https://maps.app.goo.gl/3QjzhuRJ7vH22jh89" target="_blank"
            class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded">
             📍 Lihat Lokasi di Google Maps
         </a>
-        <a href="INI LINK BUAT NGARAH KE ULASANNYA" target="_blank"
+        <a href="https://search.google.com/local/writereview?placeid=ChIJe1zjLO_91y0RoBItukXOgak" target="_blank"
            class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-4 py-2 rounded">
             ⭐ Berikan Ulasan di Google
         </a>

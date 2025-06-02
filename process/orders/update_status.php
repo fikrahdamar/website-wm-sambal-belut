@@ -2,15 +2,12 @@
 session_start();
 require_once '../../includes/conn.php';
 
-// cek apakah user sudah login dan role nya admin
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     header("Location: ../../login.php");
     exit();
 }
 
-// cek apakah order_id dan status ada di url
 if (!isset($_GET['order_id']) || !isset($_GET['status'])) {
-    // redirect ke halaman orders jika parameter tidak ada
     header("Location: ../../admin/orders/index.php?status_update=error");
     exit();
 }
@@ -18,10 +15,8 @@ if (!isset($_GET['order_id']) || !isset($_GET['status'])) {
 $order_id = intval($_GET['order_id']);
 $new_status = $_GET['status'];
 
-// cek apakah status yang dikirim valid
 $allowed_statuses = ['process', 'completed', 'canceled'];
 if (!in_array($new_status, $allowed_statuses)) {
-    // redirect ke halaman orders jika status tidak valid
     header("Location: ../../admin/orders/index.php?status_update=error");
     exit();
 }
@@ -34,18 +29,33 @@ try {
     $stmt->bindParam(':order_id', $order_id, PDO::PARAM_INT);
 
     if ($stmt->execute()) {
-        // redirect ke halaman orders jika berhasil
+        if ($new_status === 'completed') {
+            $orderQuery = "SELECT payment_method, total_price, service_type FROM orders WHERE id = :order_id";
+            $orderStmt = $conn->prepare($orderQuery);
+            $orderStmt->bindParam(':order_id', $order_id, PDO::PARAM_INT);
+            $orderStmt->execute();
+            $orderData = $orderStmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($orderData) {
+                $insertTransaction = "INSERT INTO transactions (order_id, payment_method, amount, created_at)
+                                      VALUES (:order_id, :payment_method, :total_price, NOW())";
+                $transStmt = $conn->prepare($insertTransaction);
+                $transStmt->bindParam(':order_id', $order_id, PDO::PARAM_INT);
+                $transStmt->bindParam(':payment_method', $orderData['payment_method'], PDO::PARAM_STR);
+                $transStmt->bindParam(':total_price', $orderData['total_price'], PDO::PARAM_STR);
+                $transStmt->execute();
+            }
+        }
+
         header("Location: ../../admin/orders/index.php?status_update=success");
         exit();
     } else {
-        // redirect ke halaman orders jika gagal
         header("Location: ../../admin/orders/index.php?status_update=error");
         exit();
     }
 } catch (PDOException $e) {
-    // log error atau handle itu sendiri
+    echo "PDO Exception: " . $e->getMessage();
     header("Location: ../../admin/orders/index.php?status_update=error");
     exit();
 }
-
 ?>

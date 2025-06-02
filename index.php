@@ -62,7 +62,7 @@ try {
             <ul class="flex space-x-8">
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <li><a href="./user/point/redeem_rewards.php" class="text-white hover:text-green-400 transition-colors duration-300">Point</a></li>
-                    <li><a href="./user/member/profile-page.php" class="text-white hover:text-green-400 transition-colors duration-300">Profile</a></li>
+                    <li><a href="./user/member/member-page.php" class="text-white hover:text-green-400 transition-colors duration-300">Profile</a></li>
                 <?php else: ?>
                     <li><a href="login.php" class="text-white hover:text-green-400 transition-colors duration-300">Login</a></li>
                 <?php endif; ?>

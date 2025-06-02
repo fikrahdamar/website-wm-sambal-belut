@@ -41,6 +41,11 @@ $orders = $orderStmt->fetchAll(PDO::FETCH_ASSOC);
             <a href="../../logout.php" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">Logout</a>
         </div>
     </nav>
+    <div class="max-w-7xl mx-auto px-4 mt-4">
+        <a href="../../index.php" class="inline-block bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+            ← Kembali ke Beranda
+        </a>
+    </div>
 
     <main class="max-w-4xl mx-auto mt-10 px-4">
         <!-- Profil Box -->

@@ -146,8 +146,8 @@ try {
 
                 <div class="space-y-2">
                     <h4 class="font-semibold text-lg">CONTACT ME</h4>
-                    <p class="text-gray-400">+62 812 199 9009</p>
-                    <p class="text-gray-400">Jl. wiyung gayungan semblaaa</p>
+                    <p class="text-gray-400">0882 3156 1162</p>
+                    <p class="text-gray-400">Jl. Raya Pradah Indah No.121, Babatan, Kec. Wiyung, Surabaya, Jawa Timur 60226</p>
                 </div>
 
                 <div class="space-y-2">
